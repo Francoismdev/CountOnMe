@@ -45,7 +45,7 @@
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="tappedClearButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="jd8-G4-XF5"/>
+                                                            <action selector="tappedClearButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="uMd-3m-Lka"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -213,7 +213,7 @@
                                                 <rect key="frame" x="0.0" y="435" width="414" height="106.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOD-F2-ce1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="205.5" height="106.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="101.5" height="106.5"/>
                                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="0">
@@ -224,35 +224,42 @@
                                                             <action selector="tappedNumberButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="8jJ-c2-yCn"/>
                                                         </connections>
                                                     </button>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="cmz-cm-YdC">
-                                                        <rect key="frame" x="208.5" y="0.0" width="205.5" height="106.5"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6N-Qv-BNC">
-                                                                <rect key="frame" x="0.0" y="0.0" width="101.5" height="106.5"/>
-                                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="=">
-                                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="40"/>
-                                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <connections>
-                                                                    <action selector="tappedEqualButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="wFd-Lg-F0h"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Kg-vw-vxD">
-                                                                <rect key="frame" x="104.5" y="0.0" width="101" height="106.5"/>
-                                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="÷">
-                                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="40"/>
-                                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <connections>
-                                                                    <action selector="tappedDivisionButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="8NF-WT-BuK"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gX-eH-eza">
+                                                        <rect key="frame" x="104.5" y="0.0" width="101" height="106.5"/>
+                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title=".">
+                                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="40"/>
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="Point:" destination="eqK-jh-KKu" eventType="touchUpInside" id="lDQ-bf-mTw"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9d1-ti-KiS">
+                                                        <rect key="frame" x="208.5" y="0.0" width="101.5" height="106.5"/>
+                                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="=">
+                                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="40"/>
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="tappedEqualButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="R0f-oe-CIs"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Kg-vw-vxD">
+                                                        <rect key="frame" x="313" y="0.0" width="101" height="106.5"/>
+                                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="÷">
+                                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="40"/>
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="tappedDivisionButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="8NF-WT-BuK"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>

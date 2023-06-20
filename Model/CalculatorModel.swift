@@ -61,9 +61,21 @@ extension CalculatorModel {
             self.text = ""
             self.delegate?.resetText()
         }
+        
+        // Si le caractère est un point, nous vérifions qu'il n'y a pas déjà de point dans le dernier nombre
+        if number == "." {
+            let numbers = text.split(separator: " ")
+            if let lastNumber = numbers.last, lastNumber.contains(".") {
+                delegate?.showAlert(title: "Erreur", message: "Un nombre ne peut pas avoir plus d'un point décimal.")
+                return
+            }
+        }
+        
         self.text.append(number)
         self.delegate?.textHasBeenAdded(text: number)
     }
+
+    
     
     func add(sign: String) {
         if canAddOperator {
@@ -103,25 +115,27 @@ extension CalculatorModel {
     }
 }
 
+
+
 // MARK: - Convenience Methods
 
 extension CalculatorModel {
     
     private func calculateResult() {
-        var operationsToReduce = elements
+        // Étape 1 : calculer les opérations de haute priorité (multiplication et division)
+        var operationsToReduce = processHighPriorityOperations(in: elements)
+        if operationsToReduce.contains("Erreur") {
+            delegate?.showAlert(title: "Erreur", message: "La division par zéro n'est pas possible")
+            return
+        }
         
+        // Étape 2 : calculer les opérations de basse priorité (addition et soustraction)
         while operationsToReduce.count > 1 {
-            let left = Int(operationsToReduce[0])!
+            let left = Double(operationsToReduce[0])!
             let operand = operationsToReduce[1]
-            let right = Int(operationsToReduce[2])!
-            let result: Int
-            switch operand {
-            case "+": result = left + right
-            case "-": result = left - right
-            case "*": result = left * right
-            case "/": result = left / right
-            default: fatalError("Unknown operator !")
-            }
+            let right = Double(operationsToReduce[2])!
+            let result = processLowPriorityOperation(left: left, right: right, operand: operand)
+            
             operationsToReduce = Array(operationsToReduce.dropFirst(3))
             operationsToReduce.insert("\(result)", at: 0)
         }
@@ -130,11 +144,61 @@ extension CalculatorModel {
             return
         }
         
-        let operationResult = " = \(result)"
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 2
+        guard let formattedResult = formatter.string(from: NSNumber(value: Double(result)!)) else {
+            delegate?.showAlert(title: "Erreur", message: "Impossible de formater le résultat")
+            return
+        }
+        
+        let operationResult = " = \(formattedResult)"
         
         text.append(operationResult)
         delegate?.textHasBeenAdded(text: operationResult)
     }
-}
 
+    private func processHighPriorityOperations(in elements: [String]) -> [String] {
+        var operations = elements
+        while true {
+            if let index = operations.firstIndex(where: { $0 == "*" || $0 == "/" }) {
+                guard index > 0, index < operations.count - 1 else { return ["Erreur"] }
+                let left = Double(operations[index - 1])!
+                let operand = operations[index]
+                let right = Double(operations[index + 1])!
+                
+                if operand == "/" && right == 0 {
+                    return ["Erreur"]
+                }
+                
+                let result = processOperation(left: left, right: right, operand: operand)
+                operations.replaceSubrange(index-1...index+1, with: ["\(result)"])
+            } else {
+                return operations
+            }
+        }
+    }
+
+    private func processOperation(left: Double, right: Double, operand: String) -> Double {
+        switch operand {
+        case "+": return left + right
+        case "-": return left - right
+        case "*": return left * right
+        case "/": return left / right
+        default: fatalError("Unknown operator !")
+        }
+    }
+
+    private func processLowPriorityOperation(left: Double, right: Double, operand: String) -> Double {
+        switch operand {
+        case "+": return left + right
+        case "-": return left - right
+        default: fatalError("Unknown operator !")
+        }
+    }
+
+
+
+
+}
 

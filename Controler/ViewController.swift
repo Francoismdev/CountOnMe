@@ -58,10 +58,18 @@ class ViewController: UIViewController {
         calculatorModel.equal()
     }
  
+    @IBAction func Point(_ sender: UIButton) {
+        calculatorModel.add(number: ".")
+    }
+    
+    
+    
     @IBAction func tappedClearButton(_ sender: UIButton) {
         calculatorModel.clear()
     }
 }
+
+
 
 // MARK: - CalculatorModelDelegate
 
